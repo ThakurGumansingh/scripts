@@ -78,5 +78,5 @@ elif [ -z $iv ]
     get_stats;
 fi;
 
-# cd - && rm apm.sh;
+rm apm.sh;
 exit;
