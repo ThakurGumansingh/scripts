@@ -1,4 +1,6 @@
 #!/bin/bash
+set -e
+cd /home/master/applications/pzqmqrxwte/public_html
 
 # Get the current working directory
 current_dir=$(pwd)
