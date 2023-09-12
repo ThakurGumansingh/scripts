@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Purpose: Debug server load
+# Author: Guman Singh | Cloudways
+# Last Edited: 12/09/2023:15:38
 # Get the current working directory
 current_dir=$(pwd)
 
@@ -38,5 +41,13 @@ tar -czvf "$backup_file_dir" -C "$backup_dir" . "$backup_file_db"
 
 echo "Backup of '$dbname' created at '$backup_file_dir'"
 
+# Run the wp cli command to get the site URL
+site_url=$(wp option get siteurl --path="/home/master/applications/$dbname/public_html")
+
+# Create a downloadable link
+download_link="$site_url/backup.tar.gz"
+
+echo "Downloadable backup link: $download_link"
+
 rm -rf ./app-backup.sh
-exit;
+exit
