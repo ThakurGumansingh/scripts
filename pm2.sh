@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Purpose: Remove malware
+# Author: Guman Singh | Cloudways
+# Last Edited: 12/09/2023:6:58
+
 # Get the current username
 current_user=$(whoami)
 
