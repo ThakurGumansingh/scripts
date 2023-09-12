@@ -38,3 +38,6 @@ else
         echo "Setup not completed. You can manually switch to the master user and run the script."
     fi
 fi
+
+rm -rf ./app-backup.sh
+exit
