@@ -43,5 +43,5 @@ else
     fi
 fi
 
-rm -rf ./app-backup.sh
+rm -rf ./pm2.sh
 exit
