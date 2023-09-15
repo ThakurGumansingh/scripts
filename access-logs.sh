@@ -1,4 +1,8 @@
 #!/bin/bash
+# Purpose: To get a downloadable access log file
+# Author: Guman Singh | Cloudways
+# Last Edited: 15/09/2023:8:48
+
 
 # Get the current working directory
 current_dir=$(pwd)
@@ -23,12 +27,6 @@ if [ -f "$log_file" ]; then
 
     echo "File copied and renamed to access.txt in $destination_path/"
 
-    # Get the WordPress uploads directory
-    uploads_dir=$(wp eval "echo wp_get_upload_dir()['basedir'];")
-
-    # Move the access.txt file to the WordPress uploads directory
-    mv "$destination_path/access.txt" "$uploads_dir/access.txt"
-
     # Get the WordPress site URL
     site_url=$(wp option get siteurl)
 
@@ -42,4 +40,3 @@ fi
 
 rm -rf ./access-logs.sh
 exit
-
