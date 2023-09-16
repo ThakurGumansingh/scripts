@@ -1,5 +1,5 @@
 #!/bin/bash
-# Purpose: To check concurrent traffic at the inverval of 10 seconds, there will be total 3 iterations
+# Purpose: To check concurrent traffic at the interval of 10 seconds, there will be total 3 iterations
 # Author: Guman Singh | Cloudways
 # Last Edited: 16/09/2023:8:38
 
