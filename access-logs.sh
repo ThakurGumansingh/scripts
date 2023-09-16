@@ -37,6 +37,3 @@ if [ -f "$log_file" ]; then
 else
     echo "Log file not found in $source_path."
 fi
-
-rm -rf ./access-logs.sh
-exit
