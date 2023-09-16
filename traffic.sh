@@ -15,5 +15,5 @@ dbname=$(echo "$current_dir" | grep -oP '(?<=applications/)[^/]+')
 # Execute the apm traffic command with the provided timestamps and fetched database name
 sudo apm traffic -s "$dbname" -f "$first_datetime" -u "$second_datetime"
 
-rm cpu.sh
+rm -rf ./traffic.sh
 exit
