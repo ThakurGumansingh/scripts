@@ -45,5 +45,6 @@ print_green "Node $version has been installed."
 
 bash
 
+rm install_nvm.sh
 rm -rf ./node.sh
 exit
