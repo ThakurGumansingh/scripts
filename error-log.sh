@@ -35,4 +35,3 @@ if [ -f "$error_log_file" ]; then
 else
     echo "Error log file not found in $source_path."
 fi
-rm -rf ./error-log.sh
