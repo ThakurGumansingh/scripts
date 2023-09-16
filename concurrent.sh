@@ -11,5 +11,3 @@ for ((i = 1; i <= iterations; i++)); do
     awk '$2 ~ /:0050|:01BB/ && $4 ~ /01/ {count +=1;} END {print "Concurrent Web Connections: ",count}' /proc/net/tcp
     sleep $interval
 done
-rm -f ./concurrent.sh
-exit
