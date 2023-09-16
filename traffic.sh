@@ -1,4 +1,7 @@
 #!/bin/bash
+# Purpose: To check the traffic between a particular time duration
+# Author: Guman Singh | Cloudways
+# Last Edited: 16/09/2023:09:05
 
 # Prompt the user for the first date and time
 read -p "Enter the first date and time (DD/MM/YYYY HH:MM): " first_datetime
