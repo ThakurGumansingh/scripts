@@ -2,7 +2,7 @@
 
 # Purpose: Debug server load
 # Author: Guman Singh | Cloudways
-# Last Edited: 12/09/2023:15:38
+# Last Edited: 16/09/2023:19:38
 # Get the current working directory
 current_dir=$(pwd)
 
@@ -15,16 +15,13 @@ if [ -z "$dbname" ]; then
     exit 1
 fi
 
-# Prompt for the database password
-read -s -p "Enter the MySQL password for the '$dbname' user: " db_password
-
 # Define the backup file name for the database backup
 backup_file_db="/home/master/applications/$dbname/public_html/database_backup.sql"
 
-# Create the database backup using mysqldump
-mysqldump -u "$dbname" -p"$db_password" "$dbname" > "$backup_file_db"
+# Run the wp cli command to export the database
+wp db export "$backup_file_db" --path="/home/master/applications/$dbname/public_html"
 
-# Check the mysqldump exit status for errors
+# Check the exit status for errors
 if [ $? -eq 0 ]; then
     echo "Database backup of '$dbname' created at '$backup_file_db'"
 else
