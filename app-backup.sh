@@ -1,8 +1,9 @@
 #!/bin/bash
 
-# Purpose: Debug server load
+# Purpose: To get a downloadable zip of database and web files.
 # Author: Guman Singh | Cloudways
-# Last Edited: 16/09/2023:19:38
+# Last Edited: 19/09/2023:05:38
+
 # Get the current working directory
 current_dir=$(pwd)
 
@@ -37,6 +38,20 @@ backup_file_dir="/home/master/applications/$dbname/public_html/backup.tar.gz"
 tar -czvf "$backup_file_dir" -C "$backup_dir" . "$backup_file_db"
 
 echo "Backup of '$dbname' created at '$backup_file_dir'"
+
+# Calculate the size of the public_html folder
+folder_size=$(du -sh "$backup_dir" | cut -f1)
+
+# Calculate the required minimum space as 1.5 times the folder size
+min_space_required=$((folder_size * 3 / 2))  # 1.5 times the folder size
+
+# Check available disk space
+disk_space=$(df -h / | awk 'NR==2 {print $4}')
+
+# Compare available space with the minimum required space
+if [[ "$disk_space" < "$min_space_required" ]]; then
+    echo -e "\033[1;31mWarning: Insufficient disk space. You have $disk_space available, but at least $min_space_required is required (1.5 times the size of the public_html folder).\033[0m"
+fi
 
 # Run the wp cli command to get the site URL
 site_url=$(wp option get siteurl --path="/home/master/applications/$dbname/public_html")
