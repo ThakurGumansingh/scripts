@@ -17,3 +17,5 @@ output_dir="/home/master/applications/$dbname/public_html"
 find "$logs_dir" -type f -name "apache_*.access.log" -exec grep -oE '\b([0-9]{1,3}\.){3}[0-9]{1,3}\b' {} \; | sort -u > "$output_dir/ip_addresses.txt"
 
 echo "Unique IP addresses saved in ip_addresses.txt"
+
+rm -rf ./extract.sh
