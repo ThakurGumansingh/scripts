@@ -67,6 +67,6 @@ for ip_to_check in ip_addresses:
     else:
         print('Error: Unable to connect to the AbuseIPDB API. Status code: {}'.format(response.status_code))
 EOF
-rm -rf ./ip_addresses.txt
+rm -rf "$output_dir/ip_addresses.txt"
 exit
 
