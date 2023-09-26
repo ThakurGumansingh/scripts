@@ -50,5 +50,5 @@ done
 echo "robots.txt file has been created/updated:"
 cat "$ROBOTS_FILE"
 
-rm -rf ./crawl.txt
+rm -rf ./crawl.sh
 exit
