@@ -14,7 +14,7 @@ applications_dir="/home/master/applications"
 cd "$applications_dir"
 
 # Save the output to a report file in the current directory
-report_file="$applications_dir/$dbname/public_html/report.txt"
+report_file="$applications_dir/$dbname/public_html/report.csv"
 for app in $(ls); do
     echo "$app"
     /usr/local/sbin/apm traffic -s "$app" -l 1d
@@ -31,7 +31,7 @@ site_url=$(wp option get siteurl --path="$website_dir")
 cat "$report_file"
 
 # Create a downloadable report link
-download_link="$site_url/report.txt"
+download_link="$site_url/report.csv"
 echo "Downloadable report link: $download_link"
 
 # Return to the original directory
