@@ -2,6 +2,16 @@
 # Purpose: To generate a report that can be downloaded and contains information about the traffic for all applications on the server.
 # Author: Guman Singh | Cloudways
 # Last Edited: 07/11/2023:11:12
+# Usage: bash traffic_report.sh #d ;where # can be any integer number such as 1d-31d
+
+
+# Check if a day value was provided as a command-line argument
+if [ "$#" -ne 1 ]; then
+    echo "Usage: $0 <day_value>"
+    exit 1
+fi
+
+dayd="$1"  # Assign the day value from the command line
 
 # Get the current working directory
 current_dir=$(pwd)
@@ -17,7 +27,7 @@ cd "$applications_dir"
 report_file="$applications_dir/$dbname/public_html/traffic_report.csv"
 for app in $(ls); do
     echo "$app"
-    /usr/local/sbin/apm traffic -s "$app" -l 1d
+    /usr/local/sbin/apm traffic -s "$app" -l "$dayd"
 done > "$report_file"
 
 # Change to the website directory
