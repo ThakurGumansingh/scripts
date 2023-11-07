@@ -2,8 +2,7 @@
 # Purpose: To generate a report that can be downloaded and contains information about the traffic for all applications on the server.
 # Author: Guman Singh | Cloudways
 # Last Edited: 07/11/2023:11:12
-# Usage: bash traffic_report.sh #d ;where # can be any integer number such as 1d-31d
-
+# Usage: bash traffic_report.sh 5m ;The last param(5m) can be replaced by your desired timeframe that is 5m (m=minutes) or 1h (h=hours) or 10d (d=days) etc.
 
 # Check if a day value was provided as a command-line argument
 if [ "$#" -ne 1 ]; then
