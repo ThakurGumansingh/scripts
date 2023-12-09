@@ -2,7 +2,7 @@
 
 # Purpose: To get a downloadable zip of database and web files.
 # Author: Guman Singh | Cloudways
-# Last Edited: 19/09/2023:05:38
+# Last Edited: 09/12/2023:10:28
 
 # Get the current working directory
 current_dir=$(pwd)
@@ -19,15 +19,29 @@ fi
 # Define the backup file name for the database backup
 backup_file_db="/home/master/applications/$dbname/public_html/database_backup.sql"
 
-# Run the wp cli command to export the database
-wp db export "$backup_file_db" --path="/home/master/applications/$dbname/public_html"
-
-# Check the exit status for errors
-if [ $? -eq 0 ]; then
-    echo "Database backup of '$dbname' created at '$backup_file_db'"
+# Check if it's a WordPress site
+if [ -e "/home/master/applications/$dbname/public_html/wp-config.php" ]; then
+    # Site is WordPress
+    wp db export "$backup_file_db" --path="/home/master/applications/$dbname/public_html"
+    
+    # Check the exit status for errors
+    if [ $? -eq 0 ]; then
+        echo "Database backup of '$dbname' created at '$backup_file_db'"
+    else
+        echo "Error: Database backup failed."
+        exit 1
+    fi
 else
-    echo "Error: Database backup failed."
-    exit 1
+    # Site is not WordPress, use mysqldump
+    mysqldump -u $dbname -p $dbname > "$backup_file_db"
+    
+    # Check the exit status for errors
+    if [ $? -eq 0 ]; then
+        echo "Database backup of '$dbname' created at '$backup_file_db'"
+    else
+        echo "Error: Database backup failed."
+        exit 1
+    fi
 fi
 
 # Define the backup directory and file name for the directory backup
@@ -53,8 +67,13 @@ if [[ "$disk_space" < "$min_space_required" ]]; then
     echo -e "\033[1;31mWarning: Insufficient disk space. You have $disk_space available, but at least $min_space_required is required (1.5 times the size of the public_html folder).\033[0m"
 fi
 
-# Run the wp cli command to get the site URL
-site_url=$(wp option get siteurl --path="/home/master/applications/$dbname/public_html")
+# Run the wp cli command to get the site URL if it's WordPress
+if [ -e "/home/master/applications/$dbname/public_html/wp-config.php" ]; then
+    site_url=$(wp option get siteurl --path="/home/master/applications/$dbname/public_html")
+else
+    # Site is not WordPress, use Magento command
+    site_url=$(php bin/magento config:show web/unsecure/base_url)
+fi
 
 # Create a downloadable link
 download_link="$site_url/backup.tar.gz"
