@@ -4,7 +4,7 @@
 # Last Edited: 16/09/2023:8:38
 
 iterations=3
-interval=10
+interval=3
 
 for ((i = 1; i <= iterations; i++)); do
     echo "Iteration: $i"
