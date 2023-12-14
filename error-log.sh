@@ -1,6 +1,7 @@
 #!/bin/bash
 # Purpose: To get a downloadable error log file
 # Author: Guman Singh | Cloudways
+# Usage: curl -s https://raw.githubusercontent.com/ThakurGumansingh/scripts/main/error-log.sh | bash
 
 # Get the current working directory
 current_dir=$(pwd)
