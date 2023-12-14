@@ -3,6 +3,7 @@
 # Usage: Press Enter to deactivate, Esc to activate all, Backspace to skip
 # Author: Guman Singh | Cloudways
 # Last Edited: 09/12/2023:11:17
+# Usage: curl -s https://raw.githubusercontent.com/ThakurGumansingh/scripts/main/plugins.sh | bash 
 
 # ANSI color codes
 GREEN='\033[0;32m'
