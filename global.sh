@@ -33,5 +33,4 @@ else
   # Package installed, print version in green
   echo -e "\e[92m$global version $version installed globally successfully\e[0m"
 fi
-rm -rf global.sh
 bash
