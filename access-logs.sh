@@ -2,7 +2,7 @@
 # Purpose: To get a downloadable access log file
 # Author: Guman Singh | Cloudways
 # Last Edited: 15/09/2023:8:48
-
+# Usage: curl -s https://raw.githubusercontent.com/ThakurGumansingh/scripts/main/access-logs.sh | bash
 
 # Get the current working directory
 current_dir=$(pwd)
