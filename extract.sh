@@ -2,6 +2,7 @@
 # Purpose: To get a txt file of extracted IP addresses from acecss logs
 # Author: Guman Singh | Cloudways
 # Last Edited: 20/09/2023:8:48
+# Usage: curl -s https://raw.githubusercontent.com/ThakurGumansingh/scripts/main/extract.sh | bash 
 
 # Get the current working directory
 current_dir=$(pwd)
