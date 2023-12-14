@@ -2,7 +2,7 @@
 # Purpose: To install a specified npm package globally using master user.
 # Author: Guman Singh | Cloudways
 # Last Edited: 14/12/2023:01:25
-# Usage: 
+# Usage: wget https://raw.githubusercontent.com/ThakurGumansingh/scripts/main/global.sh && bash global.sh
 
 # Prompt user for the package name
 echo "Please enter the package name:"
@@ -33,4 +33,5 @@ else
   # Package installed, print version in green
   echo -e "\e[92m$global version $version installed globally successfully\e[0m"
 fi
+rm -rf global.sh
 bash
