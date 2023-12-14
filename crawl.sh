@@ -2,6 +2,7 @@
 # Purpose: To add a delay for bots in robots.txt file
 # Author: Guman Singh | Cloudways
 # Last Edited: 15/09/2023:09:30
+# Usage: wget https://raw.githubusercontent.com/ThakurGumansingh/scripts/main/crawl.sh && bash crawl.sh
 
 # Get the current working directory
 current_dir=$(pwd)
