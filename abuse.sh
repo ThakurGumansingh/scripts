@@ -2,6 +2,7 @@
 # Purpose: To check the abuse score of IP addresses extracted from access logs
 # Author: Guman Singh | Cloudways
 # Last Edited: 20/09/2023:08:53
+# Usage: curl -s https://raw.githubusercontent.com/ThakurGumansingh/scripts/main/abuse.sh | bash
 
 # Get the current working directory
 current_dir=$(pwd)
