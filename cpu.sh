@@ -2,6 +2,7 @@
 # Purpose: To check CPU usage, disk usage, swap memory and which services are consuming more CPU
 # Author: Guman Singh | Cloudways
 # Last Edited: 16/09/2023:09:14
+# Usage: curl -s https://raw.githubusercontent.com/ThakurGumansingh/scripts/main/cpu.sh | bash
 
 # Get the top 10 processes by CPU usage
 echo "Top 10 processes by CPU usage:"
