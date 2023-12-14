@@ -2,6 +2,7 @@
 # Purpose: To download desired node version
 # Author: Guman Singh | Cloudways
 # Last Edited: 16/09/2023:8:09
+# Usage: wget https://raw.githubusercontent.com/ThakurGumansingh/scripts/main/node.sh && bash node.sh
 
 # Function to print a message in green
 print_green() {
