@@ -2,6 +2,7 @@
 # Purpose: To check concurrent traffic at the interval of 3 seconds, there will be total 3 iterations
 # Author: Guman Singh | Cloudways
 # Last Edited: 13/12/2023:8:38
+# Usage: curl -s https://raw.githubusercontent.com/ThakurGumansingh/scripts/main/concurrent.sh | bash
 
 iterations=3
 interval=3
