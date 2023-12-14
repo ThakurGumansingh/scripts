@@ -1,6 +1,7 @@
 #!/bin/bash
 # Purpose: Debug server load
 # Author: Guman Singh | Cloudways
+# Usage: wget https://raw.githubusercontent.com/ThakurGumansingh/scripts/main/apm.sh && bash apm.sh
 
 set -e
 cd /home/master/applications/
