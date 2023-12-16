@@ -5,12 +5,21 @@
 # Usage: curl -s https://raw.githubusercontent.com/ThakurGumansingh/scripts/main/server_report.sh | bash -s 1d
 # The last param(5m) can be replaced by your desired timeframe that is 5m (m=minutes) or 1h (h=hours) or 10d (d=days) etc.
 
+# Define colors
+GREEN=$(tput setaf 2)
+YELLOW=$(tput setaf 3)
+PINK=$(tput setaf 5)
+BLUE=$(tput setaf 6)
+RESET=$(tput sgr0)
+
 iterations=3
 interval=3
 CT=0
 
 # Get the number of cores
+echo "${YELLOW}Checking Concurrent Traffic"
 cores=$(lscpu | grep '^CPU(s):' | awk '{print $2}')
+echo "${RESET}"
 
 # Check if a day value was provided as a command-line argument
 if [ "$#" -ne 1 ]; then
@@ -24,30 +33,37 @@ dayd="$1"  # Assign the day value from the command line
 current_dir=$(pwd)
 
 # Extract the database name from the directory path
-dbname=$(echo "$current_dir" | grep -oP '(?<=applications/)[^/]+')
+dbname=$(echo "${GREEN}$current_dir" | grep -oP '(?<=applications/)[^/]+')
+echo "${RESET}"
 
 # Change to the applications directory
 applications_dir="/home/master/applications"
 cd "$applications_dir"
 
+
 # Save the output to a report file in the current directory
 report_file="$applications_dir/$dbname/public_html/server_report.csv"
 for app in $(ls); do
-    echo "Application: $app" >> "$report_file"
-
+    echo "${GREEN}Application: $app" >> "$report_file"
+    echo "${RESET}"
+    
     # Traffic report
+    echo -e "${BLUE}Traffic Report" >> "$report_file"
     /usr/local/sbin/apm traffic -s "$app" -l "$dayd" >> "$report_file"
-
+    echo "${RESET}"
+    
     # MySQL queries report
-    echo "MySQL Queries Report" >> "$report_file"
+    echo -e "${YELLOW}\nMySQL Queries Report" >> "$report_file"
     sudo apm mysql -s "$app" -l "$dayd" >> "$report_file"
 
     # PHP Pages report
-    echo "PHP Pages Report" >> "$report_file"
+    echo "${RESET}"
+    echo -e "${PINK}PHP Pages Report" >> "$report_file"
     sudo apm php -s "$app" -l "$dayd" >> "$report_file"
 
     echo "" >> "$report_file"  # Add a newline between application reports
 done
+    echo "${RESET}"
 
     # Add disk space report
     echo -e "\nDisk Space Report:" >> "$report_file"
@@ -73,16 +89,6 @@ done
   done
 } >> "$report_file"
 
-for ((i = 1; i <= iterations; i++)); do
-    echo "Iteration: $i"
-    current_value=$(awk '$2 ~ /:0050|:01BB/ && $4 ~ /01/ {count +=1;} END {print count}' /proc/net/tcp)
-
-    if ((i == 1 || current_value > CT)); then
-        CT=$current_value
-    fi
-
-    sleep $interval
-done
 
 echo "Maximum Concurrent Web Connections: $CT" >> "$report_file"
 
