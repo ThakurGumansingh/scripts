@@ -5,13 +5,6 @@
 # Usage: curl -s https://raw.githubusercontent.com/ThakurGumansingh/scripts/main/server_report.sh | bash -s 1d
 # The last param(5m) can be replaced by your desired timeframe that is 5m (m=minutes) or 1h (h=hours) or 10d (d=days) etc.
 
-# Define colors
-=$(tput setaf 2)
-YELLOW=$(tput setaf 3)
-PINK=$(tput setaf 5)
-ORANGE=$(tput setaf 1)
-RESET=$(tput sgr0)
-
 iterations=3
 interval=3
 CT=0
