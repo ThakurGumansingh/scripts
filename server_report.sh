@@ -90,7 +90,7 @@ done
 } >> "$report_file"
 
 
-echo "Maximum Concurrent Web Connections: $CT" >> "$report_file"
+echo "$(tput setaf 3)Maximum Concurrent Web Connections: $CT" >> "$report_file"
 
 # Check conditions based on the number of cores and print colorized output
 if ((cores == 2 && CT > 40)); then
