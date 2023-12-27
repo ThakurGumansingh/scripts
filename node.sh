@@ -10,15 +10,9 @@ print_green() {
 }
 
 # Step 1: Download and install NVM
-curl -sL https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.0/install.sh -o install_nvm.sh
-bash install_nvm.sh
+curl https://gist.githubusercontent.com/cloudways-haider/f7cb6627f6674c263624589d360e12b4/raw/9d0b2c78ace5b7b2dedb411e9d676129e34b470a/nvm_install.sh | bash
+source ~/.bashrc
 
-# Step 2: Set up NVM environment variables
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-# Step 3: Reload the shell profile to ensure NVM is available
 source ~/.bashrc ~/.bash_aliases
 command -v nvm
 
