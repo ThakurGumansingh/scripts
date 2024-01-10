@@ -15,7 +15,7 @@ source ~/.bashrc ~/.bash_aliases
 
 # Step 4: Delete npm prefix configuration
 npm config delete prefix
-
+bash
 # Step 5: Prompt user for Node.js version
 read -p "Enter the Node.js version you want to install (e.g., 18.0): " version
 
@@ -24,13 +24,13 @@ nvm install "$version"
 
 # Step 7: Use the installed Node.js version
 nvm use "$version"
-
+bash
 # Step 8: Verify the Node.js version
 node -v
 
 # Step 9: Display a message in green
 print_green "Node $version has been installed."
 
-rm install_nvm.sh
+rm nvm_install.sh
 rm -rf ./node.sh
 exit
