@@ -3,7 +3,7 @@
 # Purpose: To install node version using NVM with app user
 # Author: Guman Singh | Cloudways
 # Last Edited: 19/05/2024:10:28
-# Usage: 
+# Usage: curl -s https://raw.githubusercontent.com/ThakurGumansingh/scripts/main/nvm.sh | bash 
 
 nvm_has() {
   type "$1" > /dev/null 2>&1
