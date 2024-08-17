@@ -23,7 +23,7 @@ backup_file_db="/home/master/applications/$dbname/public_html/database_backup.sq
 # Check if it's a WordPress site
 if [ -e "/home/master/applications/$dbname/public_html/wp-config.php" ]; then
     # Site is WordPress
-    wp db export "$backup_file_db" --path="/home/master/applications/$dbname/public_html"
+    wp db export "$backup_file_db" --allow-root --path="/home/master/applications/$dbname/public_html"
     
     # Check the exit status for errors
     if [ $? -eq 0 ]; then
@@ -70,7 +70,7 @@ fi
 
 # Run the wp cli command to get the site URL if it's WordPress
 if [ -e "/home/master/applications/$dbname/public_html/wp-config.php" ]; then
-    site_url=$(wp option get siteurl --path="/home/master/applications/$dbname/public_html")
+    site_url=$(wp option get siteurl --allow-root --path="/home/master/applications/$dbname/public_html")
 else
     # Site is not WordPress, use Magento command
     site_url=$(php bin/magento config:show web/unsecure/base_url)
