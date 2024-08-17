@@ -39,7 +39,7 @@ echo "PHP Pages Report" >> "$report_file"
 sudo apm php -s "$dbname" -l "$dayd" >> "$report_file"
 
 # Run the wp cli command to get the site URL
-site_url=$(wp option get siteurl --path="$current_dir")
+site_url=$(wp option get siteurl --allow-root --path="$current_dir")
 
 # Display the contents of the report file
 cat "$report_file"
