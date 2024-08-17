@@ -27,7 +27,7 @@ if [ -f "$error_log_file" ]; then
     echo "File copied and renamed to error.txt in $destination_path/"
 
     # Get the WordPress site URL
-    site_url=$(wp option get siteurl)
+    site_url=$(wp option get siteurl --allow-root)
 
     # Generate the downloadable error log link
     error_log_link="$site_url/error.txt"
