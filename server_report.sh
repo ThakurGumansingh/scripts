@@ -114,7 +114,7 @@ website_dir="$applications_dir/$dbname/public_html"
 cd "$website_dir"
 
 # Run the wp cli command to get the site URL
-site_url=$(wp option get siteurl --path="$website_dir")
+site_url=$(wp option get siteurl --allow-root --path="$website_dir")
 
 # Display the contents of the report file
 cat "$report_file"
