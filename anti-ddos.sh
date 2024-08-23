@@ -2,7 +2,7 @@
 # Purpose: To block the IPs exceeding the number of connections and threshold limit.
 # Author: Guman Singh | Cloudways
 # Last Edited: 23/08/2024:14:34
-# Usage: 
+# Usage: curl -s https://raw.githubusercontent.com/ThakurGumansingh/scripts/main/anti-ddos.sh | bash
 
 #!/bin/bash
 
